@@ -17,7 +17,11 @@ mongoose
 		useUnifiedTopology: true,
 		useFindAndModify: false,
 	})
-	.then(console.log("connected to database 📀"))
+	.then((_) => {
+		console.log(
+			`Connected to ${mongoose.connection.db.databaseName} as ${mongoose.connection.user}`
+		);
+	})
 	.catch(console.error);
 
 //to get the css file from public folder
@@ -32,7 +36,8 @@ var todoSchema = new mongoose.Schema({
 	name: String,
 });
 
-var Todo = mongoose.model("Todo", todoSchema);
+const Todo = mongoose.model("Todo", todoSchema);
+const dbName = Todo.db.name;
 
 //routes
 app.get("/", (req, res) => {
@@ -51,12 +56,13 @@ app.post("/newtodo", (req, res) => {
 		name: req.body.task,
 	});
 	//add to db
-	console.log(Todo.db.name);
 	Todo.create(newTask, (err, Todo) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(`inserted ${newTask} to the database todo`);
+			console.log(
+				`Inserted ${newTask} to ${mongoose.connection.db.databaseName}`
+			);
 			res.redirect("/");
 		}
 	});
@@ -68,9 +74,11 @@ app.get("/delete/:id", (req, res) => {
 	console.log(req.params.id);
 	mongoose.model("Todo").deleteOne({ _id: taskId }, (err, result) => {
 		if (err) {
-			console.log(`Error is deleting the task ${taskId}`);
+			console.log(`Error deleting the task ${taskId}`);
 		} else {
-			console.log("Task successfully deleted from database");
+			console.log(
+				`Task successfully ${taskId} from ${mongoose.connection.db.databaseName}`
+			);
 			res.redirect("/");
 		}
 	});
@@ -83,7 +91,9 @@ app.post("/delAlltodo", (req, res) => {
 		if (err) {
 			console.log(err);
 		} else {
-			console.log(`Deleted all tasks`);
+			console.log(
+				`Deleted all tasks from ${mongoose.connection.db.databaseName}`
+			);
 			res.redirect("/");
 		}
 	});
