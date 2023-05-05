@@ -1,3 +1,22 @@
 # ToDo-app-node-js-express-js-mongodb
 
-> Warning: scripts in /docker-entrypoint-initdb.d are only run if you start the container with a data directory that is empty; any pre-existing database will be left untouched on container startup. One common problem is that if one of your /docker-entrypoint-initdb.d scripts fails (which will cause the entrypoint script to exit) and your orchestrator restarts the container with the already initialized data directory, it will not continue on with your scripts.
+## prereqs
+
+- have [Docker installed](https://docs.docker.com/engine/install/)
+
+## quick start
+
+Run
+
+```bash
+git clone git@github.com:classicalacademicpress/docker-todo-app.git
+cd docker-todo-app
+npm install
+docker compose up
+```
+
+Navigate to http://localhost:3000
+
+## about
+
+Frontend from here https://github.com/vinita2000/ToDo-app-node-js-express-js-mongodb
