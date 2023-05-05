@@ -23,8 +23,6 @@ services:
     restart: always
     volumes:
       - db:/data/db
-      - ./mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
-    # command: mongod --auth
     command: mongod
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGODB_USER}
