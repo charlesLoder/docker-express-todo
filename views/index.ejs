@@ -9,35 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/style.css" type="text/css">
 
-    <title>Node To Do Application</title>
+    <title>To Do List App</title>
 </head>
 <body>
     <div class="container outer">
         <form id="form" class="col-lg-6 col-8 mx-auto" action="/newtodo" method="POST">
             <div class="input-group">
-                <input id="input" class="form-control inpt" placeholder="Enter todo list item" value="" name="task">
-                <span>
+                <input
+                id="input"
+                class="form-control input"
+                placeholder="Enter todo list item"
+                value=""
+                name="task"
+                required>
+                <span class="input-group-text btn add-btn">
                     <button id="btn" type="submit" class="btn add-btn">Add</button>
                 </span>
-            </div>			     
+            </div>
         </form>
 
         <div class="container inner">
             <ul id="list" class="list col-lg-6 col-8 mx-auto">
-                <!-- <li><input type="checkbox" class="checkbox">this is a todo item </li>
-                <li><input type="checkbox" class="checkbox">this is a todo item </li> -->
                 <% for(var i=0; i<todoList.length; i++){ %>
-                    <li>
+                    <li class="d-flex align-items-center">
                         <input type="checkbox" class="checkbox">
-                       <%= todoList[i].name %>
-                       
-                        <a href="/delete/<%= todoList[i]._id %> " class="del"> 
+                        <%= todoList[i].name %>
+                        <a href="/delete/<%= todoList[i]._id %> " class="del">
                             <i class="fa fa-trash" aria-hidden="true" style="font-size:20px;color:black;"></i>
                         </a>
-                       
                     </li>
                 <% } %>
-
             </ul>
         </div>
 
@@ -46,7 +47,7 @@
                 <button id="btnClr" type="submit" class="btn mx-auto btnHide">Clear All</button>
             </form>
         </div>
-        
+
     </div>
 </body>
 <!-- JavaScript -->
