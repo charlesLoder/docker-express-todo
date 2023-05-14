@@ -1,3 +1,6 @@
+volumes:
+  db:
+
 services:
   app:
     container_name: todo_app
@@ -29,6 +32,3 @@ services:
       MONGO_INITDB_DATABASE: ${MONGODB_DATABASE}
     ports:
       - 27017:27017
-
-volumes:
-  db:
