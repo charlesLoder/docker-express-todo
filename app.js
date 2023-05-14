@@ -69,8 +69,7 @@ app.post("/newtodo", (req, res) => {
 
 //route to delete a task by id
 app.get("/delete/:id", (req, res) => {
-	var taskId = req.params.id; //get the id from the api
-	console.log(req.params.id);
+	var taskId = req.params.id;
 	mongoose.model("Todo").deleteOne({ _id: taskId }, (err, result) => {
 		if (err) {
 			console.log(`Error deleting the task ${taskId}`);
