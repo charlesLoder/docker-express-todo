@@ -37,7 +37,6 @@ var todoSchema = new mongoose.Schema({
 });
 
 const Todo = mongoose.model("Todo", todoSchema);
-const dbName = Todo.db.name;
 
 //routes
 app.get("/", (req, res) => {
