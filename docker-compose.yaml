@@ -9,7 +9,8 @@ services:
       - MONGODB_URI=${MONGODB_URI}
       - MONGODB_DATABASE=${MONGODB_DATABASE}
     volumes:
-      - ".:/app"
+      - .:/app
+      - /app/node_modules
     depends_on:
       - db
     links:
